@@ -1,0 +1,8 @@
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_zero" differs only in case from object "COL_ZERO" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_one" differs only in case from object "COL_ONE" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_two" differs only in case from object "COL_TWO" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_three" differs only in case from object "COL_THREE" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_four" differs only in case from object "COL_FOUR" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_five" differs only in case from object "COL_FIVE" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_six" differs only in case from object "COL_SIX" in the same scope
+Info (10281): Verilog HDL Declaration information at datapath.v(20): object "col_seven" differs only in case from object "COL_SEVEN" in the same scope

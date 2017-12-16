@@ -1,0 +1,13 @@
+module gpio(LEDR, SW, GPIO_0);
+
+input [9:0] SW;
+output [4:0] LEDR;
+output [1:0] GPIO_0; 
+
+assign GPIO_0[0] = SW[0];
+assign GPIO_0[1] = SW[1];
+assign LEDR[0] = SW[0];
+assign LEDR[1] = SW[1];
+			
+			
+endmodule

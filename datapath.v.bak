@@ -1,0 +1,72 @@
+module datapath (
+	input clk,
+	input resetn,
+	input [7:0] column_in,
+	
+	input ld_column,
+	input player,
+	
+	output reg valid,
+	output reg [8:0] write_to_ram
+);
+	reg [8:0] col_zero, col_one, col_two, col_three, col_four, col_five, col_six, col_seven;
+	
+	localparam
+		COL_ZERO = 8'd0,
+		COL_ONE = 8'd1,
+		COL_TWO = 8'd2,
+		COL_THREE = 8'd4,
+		COL_FOUR = 8'd8,
+		COL_FIVE = 8'd16,
+		COL_SIX = 8'd32,
+		COL_SEVEN = 8'd64,
+
+		EIGHT = 9'd8;
+
+	always @ (posedge clk) begin
+		if (!resetn) begin
+			write_to_ram <= 19'd0;
+			column_store <= 8'd0;
+			valid <= 1'd0;
+			col_zero <= 9'd64;
+			col_one <= 9'd65;
+			col_two <= 9'd66;
+			col_three <= 9'd67;
+			col_four <= 9'd68;
+			col_five <= 9'd69;
+			col_six <= 9'd70;
+			col_seven <= 9'd71;
+		end else if (ld_column) begin
+			valid <= 1'd1;
+			case (column_in)
+				COL_ZERO : begin
+					col_zero <= col_zero - EIGHT;
+					write_to_ram <= {col_zero, player, 1'd1}
+				end COL_ONE : begin
+					col_one <= col_one - EIGHT;
+					write_to_ram <= {col_one, player, 1'd1}
+				end COL_TWO : begin
+					col_two <= col_two - EIGHT;
+					write_to_ram <= {col_two, player, 1'd1}
+				end COL_THREE : begin
+					col_three <= col_three - EIGHT;
+					write_to_ram <= {col_three, player, 1'd1}
+				end COL_FOUR : begin
+					col_four <= col_four - EIGHT;
+					write_to_ram <= {col_four, player, 1'd1}
+				end COL_FIVE : begin
+					col_five <= col_five - EIGHT;
+					write_to_ram <= {col_five, player, 1'd1}
+				end COL_SIX : begin
+					col_six <= col_six - EIGHT;
+					write_to_ram <= {col_six, player, 1'd1}
+				end COL_SEVEN : begin
+					col_seven <= col_seven - EIGHT;
+					write_to_ram <= {col_seven, player, 1'd1}
+				end default : begin	
+					valid <= 1'd0;					
+				end
+			endcase
+		end
+	end	
+endmodule

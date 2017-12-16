@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="gpio">
+		<CBX_INST_ENTRY INSTANCE_NAME="|gpio|ram:r_2|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_ujd1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|gpio|ram:r|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_ujd1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

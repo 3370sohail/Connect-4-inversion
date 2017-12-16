@@ -1,0 +1,9 @@
+
+State Machine - |gpio|fsm:f|control:c0|current_state
+Name current_state.S_DRAW_2 current_state.S_LOAD_COLUMN_WAIT_2 current_state.S_LOAD_COLUMN_2 current_state.S_DRAW_1 current_state.S_LOAD_COLUMN_WAIT_1 current_state.S_LOAD_COLUMN_1 
+current_state.S_LOAD_COLUMN_1 0 0 0 0 0 0 
+current_state.S_LOAD_COLUMN_WAIT_1 0 0 0 0 1 1 
+current_state.S_DRAW_1 0 0 0 1 0 1 
+current_state.S_LOAD_COLUMN_2 0 0 1 0 0 1 
+current_state.S_LOAD_COLUMN_WAIT_2 0 1 0 0 0 1 
+current_state.S_DRAW_2 1 0 0 0 0 1 

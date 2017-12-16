@@ -1,0 +1,50 @@
+module control (
+	input go,
+	input valid,
+
+	output ld_column,
+	output draw,
+	output reg player
+);
+	reg [1:0] current_state, next_state;
+
+	localparam
+		S_LOAD_COLUMN = 2'd0,
+		S_LOAD_COLUMN_WAIT = 2'd1,
+		S_DRAW = 2'd2,
+		PLAYER_1 = 2'd2,
+		PLAYER_2 = 2'd1;
+		
+	always @ (*) begin: state_table
+		case (current_state)
+			S_LOAD_COLUMN_1 : next_state = go ? S_LOAD_COLUMN_WAIT_1 : S_LOAD_COLUMN_1;
+			S_LOAD_COLUMN_WAIT_1 : next_state = go & ~valid ? S_LOAD_COLUMN_WAIT_1 : S_LOAD_COLUMN_2;
+			S_LOAD_COLUMN_2 : next_state = go ? S_LOAD_COLUMN_WAIT_2 : S_LOAD_COLUMN_2;
+			S_LOAD_COLUMN_WAIT_2 : next_state = go & ~valid ? S_LOAD_COLUMN_WAIT_2 : S_LOAD_COLUMN_1;
+
+			default : next_state = S_LOAD_COLUMN;
+		endcase
+	end
+
+	always @ (*) begin: enable_signals
+		ld_column = 1'd0;
+		player = 2'd0;
+		case (current_state)
+			S_LOAD_COLUMN_1 : begin
+				ld_column = 1'd1;
+				player = PLAYER_1;
+			end S_LOAD_COLUMN_2 : begin
+				ld_column = 1'd1;
+				player = PLAYER_2;
+			end
+		endcase
+	end
+
+	always @ (posedge clk) begin: state_FFs
+		if (!resetn) begin
+			current_state <= S_LOAD_COLUMN;
+		end else begin
+			current_state <= next_state;
+		end
+	end
+endmodule
